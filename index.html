@@ -1,0 +1,2654 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PUBG KREATORI - Gaming Portfolio</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* PUBG Kreatori Portfolio - Barcha CSS */
+        :root {
+            --pubg-dark: #0d1b1e;
+            --pubg-dark-gray: #1a2a2d;
+            --pubg-gray: #2d3a3d;
+            --pubg-light-gray: #4a5a5d;
+            --pubg-olive: #6b8c42;
+            --pubg-olive-light: #8bac5a;
+            --pubg-brown: #8b7355;
+            --pubg-brown-light: #a88c6c;
+            --pubg-red: #c41e3a;
+            --pubg-red-dark: #9a1a2f;
+            --pubg-yellow: #f5a623;
+            --pubg-yellow-dark: #d4891a;
+            --pubg-blue: #3498db;
+            --pubg-white: #f0f0f0;
+            --pubg-black: #0a0a0a;
+            
+            --bg-primary: var(--pubg-dark);
+            --bg-secondary: var(--pubg-dark-gray);
+            --text-primary: var(--pubg-white);
+            --text-secondary: #cccccc;
+            --accent-color: var(--pubg-olive);
+            --accent-secondary: var(--pubg-brown);
+            --danger-color: var(--pubg-red);
+            --warning-color: var(--pubg-yellow);
+            --success-color: var(--pubg-olive-light);
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #e8e6e1;
+            --bg-secondary: #d6d4cf;
+            --text-primary: #1a1a1a;
+            --text-secondary: #4a4a4a;
+            --accent-color: #5a7a32;
+            --accent-secondary: #7a5a32;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: background-color 0.3s ease;
+        }
+
+        h1, h2, h3, h4, .logo-text {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+        }
+
+        /* Loading Screen */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--pubg-black);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .loading-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loading-content {
+            text-align: center;
+        }
+
+        .pubg-logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4rem;
+            font-weight: 900;
+            color: var(--pubg-red);
+            text-shadow: 0 0 10px rgba(196, 30, 58, 0.7);
+            margin-bottom: 2rem;
+            letter-spacing: 5px;
+        }
+
+        .loading-bar {
+            width: 300px;
+            height: 10px;
+            background-color: var(--pubg-gray);
+            border-radius: 5px;
+            overflow: hidden;
+            margin: 0 auto 1rem;
+            border: 1px solid var(--pubg-light-gray);
+        }
+
+        .loading-progress {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--pubg-red), var(--pubg-yellow));
+            border-radius: 5px;
+            animation: loading 2s ease-in-out forwards;
+        }
+
+        @keyframes loading {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+
+        .loading-text {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            color: var(--pubg-white);
+            letter-spacing: 3px;
+            margin-bottom: 0.5rem;
+        }
+
+        .loading-hint {
+            color: var(--pubg-brown);
+            font-size: 0.9rem;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: rgba(13, 27, 30, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--pubg-red);
+        }
+
+        .logo {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            color: var(--pubg-white);
+            letter-spacing: 1px;
+        }
+
+        .logo-highlight {
+            color: var(--pubg-red);
+            text-shadow: 0 0 5px rgba(196, 30, 58, 0.5);
+        }
+
+        .logo-sub {
+            font-size: 0.8rem;
+            color: var(--pubg-yellow);
+            margin-top: -3px;
+            letter-spacing: 1px;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+            gap: 5px;
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            border: 1px solid transparent;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--pubg-white);
+            background-color: var(--pubg-red);
+            border-color: var(--pubg-red-dark);
+            transform: translateY(-2px);
+        }
+
+        .nav-link i {
+            font-size: 1rem;
+        }
+
+        .header-controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .control-btn {
+            background-color: var(--pubg-gray);
+            color: var(--pubg-white);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .control-btn:hover {
+            background-color: var(--pubg-red);
+            transform: scale(1.1);
+            box-shadow: 0 0 10px rgba(196, 30, 58, 0.5);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--pubg-white);
+            font-size: 1.5rem;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 5px;
+            background-color: var(--pubg-gray);
+        }
+
+        .menu-toggle:hover {
+            background-color: var(--pubg-red);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 90vh;
+            position: relative;
+            overflow: hidden;
+            padding: 60px 0;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(rgba(13, 27, 30, 0.95), rgba(13, 27, 30, 0.8)), 
+                        url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .map-grid {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(196, 30, 58, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(196, 30, 58, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+        }
+
+        .parachute {
+            position: absolute;
+            top: -100px;
+            right: 20%;
+            width: 100px;
+            height: 150px;
+            background: linear-gradient(45deg, var(--pubg-brown), var(--pubg-gray));
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            animation: parachuteDrop 15s linear infinite;
+            opacity: 0.7;
+        }
+
+        @keyframes parachuteDrop {
+            0% { transform: translateY(-100px) translateX(0) rotate(5deg); }
+            100% { transform: translateY(100vh) translateX(100px) rotate(-5deg); }
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 4.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .hero-text {
+            color: var(--pubg-white);
+            display: block;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-name {
+            color: var(--pubg-red);
+            display: block;
+            text-shadow: 0 0 15px rgba(196, 30, 58, 0.7);
+            background: linear-gradient(45deg, var(--pubg-red), var(--pubg-yellow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.8rem;
+            color: var(--pubg-yellow);
+            margin-bottom: 2rem;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 3px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+            background: rgba(0,0,0,0.5);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid var(--pubg-gray);
+            min-width: 120px;
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: var(--pubg-red);
+            font-family: 'Orbitron', sans-serif;
+            text-shadow: 0 0 10px rgba(196, 30, 58, 0.5);
+        }
+
+        .stat-label {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--pubg-yellow);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 5px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 16px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            transition: all 0.3s ease;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, var(--pubg-red), var(--pubg-red-dark));
+            color: white;
+            box-shadow: 0 5px 15px rgba(196, 30, 58, 0.4);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(45deg, var(--pubg-red-dark), var(--pubg-red));
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(196, 30, 58, 0.6);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--pubg-white);
+            border: 2px solid var(--pubg-olive);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--pubg-olive);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(107, 140, 66, 0.4);
+        }
+
+        .btn-large {
+            padding: 20px 45px;
+            font-size: 1.2rem;
+        }
+
+        .btn-submit {
+            background: linear-gradient(45deg, var(--pubg-olive), var(--pubg-olive-light));
+            color: white;
+            width: 100%;
+            padding: 18px;
+            font-size: 1.2rem;
+            border: none;
+        }
+
+        .btn-submit:hover {
+            background: linear-gradient(45deg, var(--pubg-olive-light), var(--pubg-olive));
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(107, 140, 66, 0.4);
+        }
+
+        .hero-notice {
+            background-color: rgba(196, 30, 58, 0.3);
+            border-left: 4px solid var(--pubg-red);
+            padding: 15px 20px;
+            margin-top: 40px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-radius: 0 8px 8px 0;
+            backdrop-filter: blur(5px);
+            max-width: 600px;
+        }
+
+        .hero-notice i {
+            color: var(--pubg-red);
+            font-size: 1.3rem;
+        }
+
+        .hero-notice span {
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+            color: var(--pubg-yellow);
+        }
+
+        .weapon-display {
+            position: absolute;
+            bottom: 40px;
+            right: 40px;
+            background: rgba(42, 42, 42, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            border: 2px solid var(--pubg-brown);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .weapon {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .weapon-icon {
+            color: var(--pubg-red);
+            font-size: 1.8rem;
+            text-shadow: 0 0 5px rgba(196, 30, 58, 0.5);
+        }
+
+        .weapon-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+            color: var(--pubg-white);
+        }
+
+        .ammo-count {
+            padding-left: 20px;
+            border-left: 2px solid var(--pubg-gray);
+        }
+
+        .ammo {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--pubg-yellow);
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        /* Sections Common */
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            color: var(--pubg-white);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .section-title i {
+            color: var(--pubg-red);
+            font-size: 2.5rem;
+        }
+
+        .section-subtitle {
+            color: var(--pubg-yellow);
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .section-footer {
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        /* Videos Section */
+        .videos-section {
+            background-color: var(--bg-secondary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .videos-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--pubg-red), var(--pubg-yellow));
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .video-card {
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 2px solid var(--pubg-gray);
+            position: relative;
+        }
+
+        .video-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--pubg-red), transparent);
+        }
+
+        .video-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border-color: var(--pubg-red);
+        }
+
+        .video-thumbnail {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .video-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .video-card:hover .video-thumbnail img {
+            transform: scale(1.1);
+        }
+
+        .video-play {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70px;
+            height: 70px;
+            background: rgba(196, 30, 58, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            opacity: 0;
+            transition: all 0.3s ease;
+            border: 3px solid white;
+        }
+
+        .video-card:hover .video-play {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .video-duration {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background-color: rgba(0, 0, 0, 0.9);
+            color: var(--pubg-yellow);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: bold;
+        }
+
+        .video-info {
+            padding: 25px;
+        }
+
+        .video-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--pubg-white);
+            line-height: 1.4;
+            min-height: 60px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .video-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--pubg-yellow);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--pubg-gray);
+        }
+
+        .video-meta i {
+            margin-right: 8px;
+            color: var(--pubg-red);
+        }
+
+        .video-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background-color: var(--pubg-gray);
+            color: var(--pubg-white);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .tag:hover {
+            background-color: var(--pubg-red);
+            transform: scale(1.05);
+        }
+
+        .tag.highlight {
+            background: linear-gradient(45deg, var(--pubg-red), var(--pubg-red-dark));
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background-color: var(--bg-primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stats-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--pubg-yellow), var(--pubg-red));
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .stats-card {
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            padding: 40px;
+            border: 2px solid var(--pubg-gray);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stats-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--pubg-red), var(--pubg-yellow));
+        }
+
+        .stats-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--pubg-gray);
+        }
+
+        .stats-header h3 {
+            color: var(--pubg-white);
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+        }
+
+        .season-badge, .map-name {
+            background: linear-gradient(45deg, var(--pubg-red), var(--pubg-red-dark));
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: bold;
+            letter-spacing: 1px;
+            box-shadow: 0 3px 10px rgba(196, 30, 58, 0.3);
+        }
+
+        .map-name {
+            background: linear-gradient(45deg, var(--pubg-olive), var(--pubg-olive-light));
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 25px;
+            background-color: rgba(13, 27, 30, 0.7);
+            border-radius: 12px;
+            border: 1px solid var(--pubg-gray);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-5px);
+            border-color: var(--pubg-red);
+            box-shadow: 0 10px 25px rgba(196, 30, 58, 0.2);
+        }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            color: var(--pubg-red);
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(196, 30, 58, 0.3);
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--pubg-white);
+            font-family: 'Orbitron', sans-serif;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .stat-label {
+            color: var(--pubg-yellow);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .stat-progress {
+            height: 8px;
+            background-color: var(--pubg-gray);
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--pubg-red), var(--pubg-yellow));
+            border-radius: 4px;
+            position: relative;
+        }
+
+        .progress-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .weapon-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .weapon-item {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            background-color: rgba(13, 27, 30, 0.7);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            border: 1px solid var(--pubg-gray);
+        }
+
+        .weapon-item:hover {
+            transform: translateX(10px);
+            border-color: var(--pubg-red);
+            background-color: rgba(196, 30, 58, 0.1);
+        }
+
+        .weapon-rank {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--pubg-yellow);
+            width: 50px;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .weapon-info {
+            flex: 1;
+        }
+
+        .weapon-name {
+            font-weight: bold;
+            color: var(--pubg-white);
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .weapon-kills {
+            color: var(--pubg-yellow);
+            font-size: 0.95rem;
+        }
+
+        .weapon-accuracy {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--pubg-olive);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .health-display {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            padding: 40px;
+            border: 2px solid var(--pubg-gray);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .health-display::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--pubg-red), var(--pubg-blue));
+        }
+
+        .health-bar, .armor-bar {
+            margin-bottom: 30px;
+        }
+
+        .health-label, .armor-label {
+            color: var(--pubg-white);
+            margin-bottom: 15px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+            letter-spacing: 2px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .health-meter, .armor-meter {
+            height: 35px;
+            background-color: var(--pubg-dark-gray);
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            border: 2px solid var(--pubg-gray);
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .health-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--pubg-red), #ff6b6b);
+            border-radius: 20px;
+            position: relative;
+            transition: width 1s ease;
+        }
+
+        .health-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: pulse 2s infinite;
+        }
+
+        .armor-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--pubg-blue), #3498db);
+            border-radius: 20px;
+            position: relative;
+            transition: width 1s ease;
+        }
+
+        .armor-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: pulse 2s infinite 0.5s;
+        }
+
+        @keyframes pulse {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .health-text, .armor-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: 1.2rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            letter-spacing: 2px;
+        }
+
+        /* About Section */
+        .about-section {
+            background-color: var(--bg-secondary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--pubg-olive), var(--pubg-red));
+        }
+
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 50px;
+        }
+
+        .about-card {
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 2px solid var(--pubg-gray);
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            position: relative;
+        }
+
+        .about-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--pubg-red), var(--pubg-yellow));
+        }
+
+        .about-image {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .about-card:hover .about-image img {
+            transform: scale(1.05);
+        }
+
+        .player-level {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 70px;
+            height: 70px;
+            background: radial-gradient(circle, var(--pubg-red), var(--pubg-red-dark));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: white;
+            border: 4px solid var(--pubg-yellow);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            z-index: 2;
+        }
+
+        .about-content {
+            padding: 50px;
+        }
+
+        .about-title {
+            font-size: 2.5rem;
+            color: var(--pubg-white);
+            margin-bottom: 25px;
+            line-height: 1.3;
+        }
+
+        .about-text {
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .about-highlights {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .highlight {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            background-color: rgba(13, 27, 30, 0.7);
+            border-radius: 10px;
+            border: 1px solid var(--pubg-gray);
+            transition: all 0.3s ease;
+        }
+
+        .highlight:hover {
+            transform: translateY(-5px);
+            border-color: var(--pubg-red);
+            background-color: rgba(196, 30, 58, 0.1);
+        }
+
+        .highlight i {
+            font-size: 2.5rem;
+            color: var(--pubg-red);
+            text-shadow: 0 0 10px rgba(196, 30, 58, 0.3);
+        }
+
+        .highlight h4 {
+            color: var(--pubg-white);
+            margin-bottom: 8px;
+            font-size: 1.2rem;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .highlight p {
+            color: var(--pubg-yellow);
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+        }
+
+        .about-mission {
+            background: rgba(107, 140, 66, 0.2);
+            padding: 30px;
+            border-radius: 12px;
+            border-left: 6px solid var(--pubg-olive);
+            margin-top: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-mission::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.05), transparent);
+        }
+
+        .about-mission h4 {
+            color: var(--pubg-olive);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .about-mission p {
+            color: var(--text-secondary);
+            font-style: italic;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 18px 30px;
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            text-decoration: none;
+            color: var(--pubg-white);
+            transition: all 0.3s ease;
+            border: 2px solid var(--pubg-gray);
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+            font-size: 1.1rem;
+            min-width: 180px;
+            justify-content: center;
+        }
+
+        .social-link:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+
+        .social-link i {
+            font-size: 1.8rem;
+        }
+
+        .social-link.youtube:hover {
+            background: linear-gradient(45deg, #FF0000, #CC0000);
+            border-color: #FF0000;
+            color: white;
+        }
+
+        .social-link.twitch:hover {
+            background: linear-gradient(45deg, #9146FF, #772CE8);
+            border-color: #9146FF;
+            color: white;
+        }
+
+        .social-link.instagram:hover {
+            background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+            border-color: transparent;
+            color: white;
+        }
+
+        .social-link.discord:hover {
+            background: linear-gradient(45deg, #5865F2, #4752C4);
+            border-color: #5865F2;
+            color: white;
+        }
+
+        .social-link.telegram:hover {
+            background: linear-gradient(45deg, #0088cc, #0077B5);
+            border-color: #0088cc;
+            color: white;
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            background-color: var(--bg-primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--pubg-yellow), var(--pubg-olive));
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            height: 280px;
+            cursor: pointer;
+            border: 2px solid var(--pubg-gray);
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            border-color: var(--pubg-red);
+            box-shadow: 0 15px 35px rgba(196, 30, 58, 0.3);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 50%);
+            display: flex;
+            align-items: flex-end;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            padding: 30px;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-info h4 {
+            color: var(--pubg-white);
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        .gallery-info p {
+            color: var(--pubg-yellow);
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background-color: var(--bg-secondary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--pubg-red), var(--pubg-olive));
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .contact-info {
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            padding: 50px;
+            border: 2px solid var(--pubg-gray);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-info::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--pubg-red), var(--pubg-yellow));
+        }
+
+        .contact-title {
+            font-size: 2.2rem;
+            color: var(--pubg-white);
+            margin-bottom: 20px;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 2px;
+        }
+
+        .contact-text {
+            color: var(--text-secondary);
+            margin-bottom: 50px;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            padding: 20px;
+            background-color: rgba(13, 27, 30, 0.7);
+            border-radius: 10px;
+            border: 1px solid var(--pubg-gray);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateX(10px);
+            border-color: var(--pubg-red);
+        }
+
+        .contact-item i {
+            font-size: 1.8rem;
+            color: var(--pubg-red);
+            width: 50px;
+            text-align: center;
+        }
+
+        .contact-item h4 {
+            color: var(--pubg-white);
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        .contact-item p {
+            color: var(--pubg-yellow);
+            font-size: 1.1rem;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .play-now {
+            background: rgba(107, 140, 66, 0.2);
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 6px solid var(--pubg-olive);
+            text-align: center;
+        }
+
+        .play-now h4 {
+            color: var(--pubg-olive);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 2px;
+        }
+
+        .play-now p {
+            color: var(--text-secondary);
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+        }
+
+        .contact-form {
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            padding: 50px;
+            border: 2px solid var(--pubg-gray);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-form::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--pubg-yellow), var(--pubg-olive));
+        }
+
+        .form-title {
+            font-size: 2.2rem;
+            color: var(--pubg-white);
+            margin-bottom: 40px;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 2px;
+        }
+
+        .form-group {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 18px 20px 18px 60px;
+            background-color: rgba(13, 27, 30, 0.8);
+            border: 2px solid var(--pubg-gray);
+            border-radius: 10px;
+            color: var(--pubg-white);
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--pubg-red);
+            background-color: rgba(13, 27, 30, 1);
+            box-shadow: 0 0 15px rgba(196, 30, 58, 0.3);
+        }
+
+        .form-group i {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--pubg-red);
+            font-size: 1.3rem;
+            z-index: 1;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+            padding-top: 20px;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--pubg-dark-gray);
+            padding: 80px 0 40px;
+            margin-top: 80px;
+            border-top: 2px solid var(--pubg-red);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--pubg-red), var(--pubg-yellow), var(--pubg-olive));
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+
+        .footer-logo .logo-text {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .footer-logo p {
+            color: var(--pubg-yellow);
+            line-height: 1.8;
+            font-size: 1.1rem;
+            max-width: 300px;
+        }
+
+        .footer-links h4, .footer-social h4 {
+            color: var(--pubg-white);
+            margin-bottom: 25px;
+            font-size: 1.4rem;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 2px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: var(--pubg-yellow);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-links a:hover {
+            color: var(--pubg-red);
+            transform: translateX(10px);
+        }
+
+        .footer-links a i {
+            color: var(--pubg-red);
+            font-size: 0.9rem;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 55px;
+            height: 55px;
+            background-color: var(--pubg-gray);
+            border-radius: 50%;
+            color: var(--pubg-white);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.5rem;
+            border: 2px solid transparent;
+        }
+
+        .social-icons a:hover {
+            background-color: var(--pubg-red);
+            transform: translateY(-5px);
+            border-color: var(--pubg-red-dark);
+            box-shadow: 0 8px 20px rgba(196, 30, 58, 0.4);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid var(--pubg-gray);
+            color: var(--pubg-yellow);
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .game-notice {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: var(--pubg-light-gray);
+            font-style: italic;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .hero-title { font-size: 3.8rem; }
+            .section-title { font-size: 2.5rem; }
+        }
+
+        @media (max-width: 1024px) {
+            .stats-container { grid-template-columns: 1fr; }
+            .about-card { grid-template-columns: 1fr; }
+            .contact-container { grid-template-columns: 1fr; }
+            .footer-content { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 900px) {
+            .header { flex-wrap: wrap; }
+            .nav {
+                order: 3;
+                width: 100%;
+                margin-top: 20px;
+                display: none;
+            }
+            .nav.active { 
+                display: block;
+                animation: slideDown 0.3s ease;
+            }
+            @keyframes slideDown {
+                from { opacity: 0; transform: translateY(-20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            .nav-list { 
+                flex-direction: column; 
+                gap: 10px;
+                background-color: rgba(13, 27, 30, 0.98);
+                padding: 20px;
+                border-radius: 10px;
+                border: 1px solid var(--pubg-gray);
+            }
+            .menu-toggle { 
+                display: block; 
+                order: 2;
+            }
+            .hero-title { font-size: 3.2rem; }
+            .hero-subtitle { font-size: 1.5rem; }
+            .hero-stats { justify-content: center; }
+            .stats-grid { grid-template-columns: 1fr; }
+            .about-highlights { grid-template-columns: 1fr; }
+            .social-links { justify-content: center; }
+            .social-link { min-width: 160px; }
+        }
+
+        @media (max-width: 768px) {
+            .hero { min-height: 80vh; padding: 40px 0; }
+            .section { padding: 70px 0; }
+            .section-title { font-size: 2.2rem; }
+            .section-subtitle { font-size: 1.3rem; }
+            .hero-title { font-size: 2.8rem; }
+            .hero-subtitle { font-size: 1.3rem; }
+            .hero-buttons { flex-direction: column; }
+            .btn { width: 100%; justify-content: center; }
+            .weapon-display { position: relative; bottom: auto; right: auto; margin-top: 40px; width: fit-content; }
+            .video-grid { grid-template-columns: 1fr; }
+            .gallery-grid { grid-template-columns: 1fr; }
+            .footer-content { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+            .social-icons { justify-content: center; }
+            .footer-logo p { margin: 0 auto; }
+        }
+
+        @media (max-width: 480px) {
+            .hero { min-height: 70vh; }
+            .hero-title { font-size: 2.2rem; }
+            .hero-subtitle { font-size: 1.1rem; }
+            .section-title { font-size: 1.8rem; }
+            .section-subtitle { font-size: 1.1rem; }
+            .stat-number { font-size: 2.2rem; }
+            .about-content { padding: 30px; }
+            .contact-info, .contact-form { padding: 30px; }
+            .social-link { min-width: 140px; padding: 15px 20px; }
+        }
+    </style>
+</head>
+<body data-theme="dark">
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-content">
+            <div class="pubg-logo">PUBG</div>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+            <div class="loading-text">L O A D I N G . . .</div>
+            <div class="loading-hint">Xarita: Erangel</div>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Header/Navigation -->
+        <header class="header">
+            <div class="logo">
+                <span class="logo-text">PUBG<span class="logo-highlight">CREATOR</span></span>
+                <span class="logo-sub">UZBEK GAMER</span>
+            </div>
+            
+            <nav class="nav" id="mainNav">
+                <ul class="nav-list">
+                    <li><a href="#home" class="nav-link active"><i class="fas fa-home"></i> BOSH SAHIFA</a></li>
+                    <li><a href="#videos" class="nav-link"><i class="fab fa-youtube"></i> VIDEOLAR</a></li>
+                    <li><a href="#stats" class="nav-link"><i class="fas fa-chart-line"></i> STATISTIKA</a></li>
+                    <li><a href="#about" class="nav-link"><i class="fas fa-user"></i> MEN HAQIMDA</a></li>
+                    <li><a href="#gallery" class="nav-link"><i class="fas fa-images"></i> GALEREYA</a></li>
+                    <li><a href="#contact" class="nav-link"><i class="fas fa-envelope"></i> ALOQA</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-controls">
+                <button id="soundToggle" class="control-btn">
+                    <i class="fas fa-volume-up"></i>
+                </button>
+                <button id="themeToggle" class="control-btn">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="map-grid"></div>
+            <div class="parachute"></div>
+            
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="hero-text">JANGCHI</span>
+                    <span class="hero-name" id="typewriter"></span>
+                </h1>
+                <p class="hero-subtitle">PUBG MOBILE KONTENT KREATORI</p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">10K+</span>
+                        <span class="stat-label">FOLLOWER</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">VIDEO</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">80%</span>
+                        <span class="stat-label">G'ALABA</span>
+                    </div>
+                </div>
+                
+                <div class="hero-buttons">
+                    <a href="https://youtube.com/shorts/tYqwLXoJCDo?si=D4I4D62B9pZaa9JT" class="btn btn-primary">
+                        <i class="fab fa-youtube"></i> VIDEOLARNI KO'RISH
+                    </a>
+                    <a href="https://www.youtube.com/@nazarovv_pubg" target="_blank" class="btn btn-secondary">
+                        <i class="fas fa-play-circle"></i> YOUTUBE KANALIM
+                    </a>
+                </div>
+                
+                <div class="hero-notice">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span>Hozirda o'yinda: SOLO vs SQUAD | JANG REJIMI: AGGRESSIVE</span>
+                </div>
+            </div>
+            
+            <div class="weapon-display">
+                <div class="weapon">
+                    <i class="fas fa-crosshairs weapon-icon"></i>
+                    <span class="weapon-name">M416</span>
+                </div>
+                <div class="ammo-count">
+                    <span class="ammo" id="ammoCounter">40/160</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Videos Section -->
+        <section class="section videos-section" id="videos">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fab fa-youtube"></i> SO'NGI VIDEOLAR
+                </h2>
+                <p class="section-subtitle">Eng zo'r gameplay va montajlar</p>
+            </div>
+            
+            <div class="video-grid">
+                <!-- Video 1 -->
+                <div class="video-card" onclick="openVideo('SOLO vs SQUAD 25 KILL')">
+                    <div class="video-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="PUBG Video">
+                        <div class="video-play">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <div class="video-duration">15:42</div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">SOLO vs SQUAD 25 KILL - PUBG MOBILE</h3>
+                        <div class="video-meta">
+                            <span class="video-views"><i class="fas fa-eye"></i> 25.4K</span>
+                            <span class="video-date"><i class="far fa-calendar"></i> 3 kun oldin</span>
+                        </div>
+                        <div class="video-tags">
+                            <span class="tag">GAMEPLAY</span>
+                            <span class="tag highlight">MONTAJ</span>
+                            <span class="tag">SOLO</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Video 2 -->
+                <div class="video-card" onclick="openVideo('ERANGEL PUSH')">
+                    <div class="video-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="PUBG Video">
+                        <div class="video-play">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <div class="video-duration">22:18</div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">ERANGEL PUSH - 15 KILL GAME</h3>
+                        <div class="video-meta">
+                            <span class="video-views"><i class="fas fa-eye"></i> 18.7K</span>
+                            <span class="video-date"><i class="far fa-calendar"></i> 5 kun oldin</span>
+                        </div>
+                        <div class="video-tags">
+                            <span class="tag">SQUAD</span>
+                            <span class="tag highlight">ERANGEL</span>
+                            <span class="tag">PUSH</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Video 3 -->
+                <div class="video-card" onclick="openVideo('MIRAMAR SNIPER')">
+                    <div class="video-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="PUBG Video">
+                        <div class="video-play">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <div class="video-duration">18:33</div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">MIRAMAR SNIPER ONLY - IMPOSSIBLE MISSION</h3>
+                        <div class="video-meta">
+                            <span class="video-views"><i class="fas fa-eye"></i> 32.1K</span>
+                            <span class="video-date"><i class="far fa-calendar"></i> 1 hafta oldin</span>
+                        </div>
+                        <div class="video-tags">
+                            <span class="tag">SNIPER</span>
+                            <span class="tag">MIRAMAR</span>
+                            <span class="tag highlight">CHALLENGE</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Video 4 -->
+                <div class="video-card" onclick="openVideo('SANHOK RUSH')">
+                    <div class="video-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1534423861386-85a16f5d13fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="PUBG Video">
+                        <div class="video-play">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <div class="video-duration">12:45</div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">SANHOK RUSH - FASTEST CHICKEN DINNER</h3>
+                        <div class="video-meta">
+                            <span class="video-views"><i class="fas fa-eye"></i> 14.9K</span>
+                            <span class="video-date"><i class="far fa-calendar"></i> 2 hafta oldin</span>
+                        </div>
+                        <div class="video-tags">
+                            <span class="tag">SANHOK</span>
+                            <span class="tag">RUSH</span>
+                            <span class="tag highlight">WINNER</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section-footer">
+                <a href="https://www.youtube.com/@nazarovv_pubg" target="_blank" class="btn btn-large">
+                    <i class="fab fa-youtube"></i> BARCHA VIDEOLARNI KO'RISH
+                </a>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="section stats-section" id="stats">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fas fa-chart-bar"></i> Mening STATISTIKAM
+                </h2>
+                <p class="section-subtitle">PUBG MOBILE - SEASON 25</p>
+            </div>
+            
+            <div class="stats-container">
+                <div class="stats-card main-stats">
+                    <div class="stats-header">
+                        <h3>ASOSIY KO'RSATKICHLAR</h3>
+                        <div class="season-badge">SEASON 25</div>
+                    </div>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-box">
+                            <div class="stat-icon">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <div class="stat-value">842</div>
+                            <div class="stat-label">G'ALABALAR</div>
+                            <div class="stat-progress">
+                                <div class="progress-bar" style="width: 78%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-box">
+                            <div class="stat-icon">
+                                <i class="fas fa-skull-crossbones"></i>
+                            </div>
+                            <div class="stat-value">18.4K</div>
+                            <div class="stat-label">O'LDIRISHLAR</div>
+                            <div class="stat-progress">
+                                <div class="progress-bar" style="width: 92%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-box">
+                            <div class="stat-icon">
+                                <i class="fas fa-crosshairs"></i>
+                            </div>
+                            <div class="stat-value">32.5%</div>
+                            <div class="stat-label">ANIQLIK</div>
+                            <div class="stat-progress">
+                                <div class="progress-bar" style="width: 65%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-box">
+                            <div class="stat-icon">
+                                <i class="fas fa-medal"></i>
+                            </div>
+                            <div class="stat-value">Conqueror</div>
+                            <div class="stat-label">DARAJASI</div>
+                            <div class="stat-progress">
+                                <div class="progress-bar" style="width: 95%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stats-card weapon-stats">
+                    <div class="stats-header">
+                        <h3>TOP QUROLLAR</h3>
+                        <div class="map-name">ERANGEL</div>
+                    </div>
+                    
+                    <div class="weapon-list">
+                        <div class="weapon-item">
+                            <div class="weapon-rank">1</div>
+                            <div class="weapon-info">
+                                <div class="weapon-name">M416</div>
+                                <div class="weapon-kills">4,238 o'ldirish</div>
+                            </div>
+                            <div class="weapon-accuracy">38%</div>
+                        </div>
+                        
+                        <div class="weapon-item">
+                            <div class="weapon-rank">2</div>
+                            <div class="weapon-info">
+                                <div class="weapon-name">AKM</div>
+                                <div class="weapon-kills">3,891 o'ldirish</div>
+                            </div>
+                            <div class="weapon-accuracy">42%</div>
+                        </div>
+                        
+                        <div class="weapon-item">
+                            <div class="weapon-rank">3</div>
+                            <div class="weapon-info">
+                                <div class="weapon-name">AWM</div>
+                                <div class="weapon-kills">2,745 o'ldirish</div>
+                            </div>
+                            <div class="weapon-accuracy">67%</div>
+                        </div>
+                        
+                        <div class="weapon-item">
+                            <div class="weapon-rank">4</div>
+                            <div class="weapon-info">
+                                <div class="weapon-name">UMP45</div>
+                                <div class="weapon-kills">2,112 o'ldirish</div>
+                            </div>
+                            <div class="weapon-accuracy">31%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="health-display">
+                <div class="health-bar">
+                    <div class="health-label">
+                        <span>JANGCHI HOLATI</span>
+                        <span id="healthValue">85%</span>
+                    </div>
+                    <div class="health-meter">
+                        <div class="health-fill" style="width: 85%"></div>
+                        <div class="health-text">85%</div>
+                    </div>
+                </div>
+                
+                <div class="armor-bar">
+                    <div class="armor-label">
+                        <span>ZIRH</span>
+                        <span id="armorValue">LEVEL 3</span>
+                    </div>
+                    <div class="armor-meter">
+                        <div class="armor-fill" style="width: 60%"></div>
+                        <div class="armor-text">LEVEL 3</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="section about-section" id="about">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fas fa-user-secret"></i> MEN HAQIMDA
+                </h2>
+                <p class="section-subtitle">PUBG Kreatori va Kontent Yaratuvchi</p>
+            </div>
+            
+            <div class="about-container">
+                <div class="about-card">
+                    <div class="about-image">
+                        <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="PUBG Player">
+                        <div class="player-level">
+                            <span>99</span>
+                        </div>
+                    </div>
+                    
+                    <div class="about-content">
+                        <h3 class="about-title">SALOM, MEN PUBG O'YINCHISIMAN</h3>
+                        <p class="about-text">
+                            Men 2022-yildan beri PUBG Mobile o'ynab kelaman. Dastlab do'stlar bilan vaqt o'tkazish uchun boshlaganim, endi esa bu mening ishim va qiziqishimga aylangan. YouTube kanalimda gameplay, strategiya va qiziqarli montajlarni joylayman. Har bir video orqali yangi o'yinchilarga yordam berish va kuchli jamoaviy o'yin muhitini yaratishni maqsad qilganman.
+                        </p>
+                        
+                        <div class="about-highlights">
+                            <div class="highlight">
+                                <i class="fas fa-award"></i>
+                                <div>
+                                    <h4>Conqueror Darajasi</h4>
+                                    <p>7 mavsum davomida</p>
+                                </div>
+                            </div>
+                            
+                            <div class="highlight">
+                                <i class="fas fa-users"></i>
+                                <div>
+                                    <h4>Jamoaviy O'yin</h4>
+                                    <p>500+ SQUAD g'alabasi</p>
+                                </div>
+                            </div>
+                            
+                            <div class="highlight">
+                                <i class="fas fa-video"></i>
+                                <div>
+                                    <h4>Kontent Yaratish</h4>
+                                    <p>3 yillik tajriba</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="about-mission">
+                            <h4><i class="fas fa-bullseye"></i> MISSION STATEMENT</h4>
+                            <p>"Har bir video orqali yangi o'yinchilarga yordam berish va kuchli jamoaviy o'yin muhitini yaratish"</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="social-links">
+                    <a href="https://www.youtube.com/@nazarovv_pubg" target="_blank" class="social-link youtube">
+                        <i class="fab fa-youtube"></i>
+                        <span>YouTube</span>
+                    </a>
+                    <a href="https://www.twitch.tv" target="_blank" class="social-link twitch">
+                        <i class="fab fa-twitch"></i>
+                        <span>Twitch</span>
+                    </a>
+                    <a href="https://www.instagram.com" target="_blank" class="social-link instagram">
+                        <i class="fab fa-instagram"></i>
+                        <span>Instagram</span>
+                    </a>
+                    <a href="https://discord.com" target="_blank" class="social-link discord">
+                        <i class="fab fa-discord"></i>
+                        <span>Discord</span>
+                    </a>
+                    <a href="https://t.me" target="_blank" class="social-link telegram">
+                        <i class="fab fa-telegram"></i>
+                        <span>Telegram</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section class="section gallery-section" id="gallery">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fas fa-camera"></i> GALEREYA
+                </h2>
+                <p class="section-subtitle">Eng yaxshi gameplay momentlari</p>
+            </div>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item" onclick="showGalleryImage(1)">
+                    <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="PUBG Screenshot">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h4>WINNER WINNER</h4>
+                            <p>Chicken Dinner momenti</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" onclick="showGalleryImage(2)">
+                    <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="PUBG Screenshot">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h4>SNIPER SHOT</h4>
+                            <p>500m dan aniq zarba</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" onclick="showGalleryImage(3)">
+                    <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="PUBG Screenshot">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h4>VEHICLE KILL</h4>
+                            <p>Avtomobil bilan o'ldirish</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" onclick="showGalleryImage(4)">
+                    <img src="https://images.unsplash.com/photo-1534423861386-85a16f5d13fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="PUBG Screenshot">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h4>SQUAD WIPE</h4>
+                            <p>Butun jamoa yo'q qilindi</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" onclick="showGalleryImage(5)">
+                    <img src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="PUBG Screenshot">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h4>AIRDROP RUSH</h4>
+                            <p>Airdrop uchun jang</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" onclick="showGalleryImage(6)">
+                    <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="PUBG Screenshot">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h4>FINAL CIRCLE</h4>
+                            <p>Oxiri doira jangi</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="section contact-section" id="contact">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fas fa-headset"></i> ALOQA
+                </h2>
+                <p class="section-subtitle">Hamkorlik yoki savollar uchun</p>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3 class="contact-title">MANZILIMIZ</h3>
+                    <p class="contact-text">PUBG olamida har doim yangi sheriklar kutamiz. Agar sizda hamkorlik taklifi bo'lsa yoki o'yin haqida savollaringiz bo'lsa, quyidagi ma'lumotlar orqali men bilan bog'lanishingiz mumkin.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-gamepad"></i>
+                            <div>
+                                <h4>O'YIN NOMI</h4>
+                                <p>PUBG_Kreator_UZ</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-id-badge"></i>
+                            <div>
+                                <h4>PLAYER ID</h4>
+                                <p>52911261067</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>EMAIL</h4>
+                                <p>pubg.kreator@example.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-globe"></i>
+                            <div>
+                                <h4>SERVER</h4>
+                                <p>Europe / Asia</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="play-now">
+                        <h4>HOZIR O'YNA!</h4>
+                        <p>Men odatla 18:00 - 23:00 oralig'ida onlayn bo'laman. Agar siz ham o'ynashni istasangiz, quyidagi tugma orqali squadga qo'shiling.</p>
+                        <a href="#" class="btn btn-primary" onclick="joinSquad()">
+                            <i class="fas fa-play-circle"></i> SQUADGA QO'SHIL
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3 class="form-title">XABAR YUBORISH</h3>
+                    
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="name" placeholder="Ismingiz" required>
+                            <i class="fas fa-user"></i>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="email" id="email" placeholder="Email manzilingiz" required>
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        
+                        <div class="form-group">
+                            <select id="subject" required>
+                                <option value="" disabled selected>Mavzuni tanlang</option>
+                                <option value="collaboration">Hamkorlik</option>
+                                <option value="gameplay">Gameplay maslahat</option>
+                                <option value="video">Video taklifi</option>
+                                <option value="other">Boshqa</option>
+                            </select>
+                            <i class="fas fa-list"></i>
+                        </div>
+                        
+                        <div class="form-group">
+                            <textarea id="message" rows="5" placeholder="Xabaringiz..." required></textarea>
+                            <i class="fas fa-comment"></i>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-submit">
+                            <i class="fas fa-paper-plane"></i> XABARNI YUBORISH
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="logo-text">PUBG<span class="logo-highlight">CREATOR</span></div>
+                    <p>Uzbek PUBG Mobile kontent yaratuvchisi. Har kuni yangi videolar, gameplay va strategiyalar.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>TEZKOR HAVOLALAR</h4>
+                    <ul>
+                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Bosh sahifa</a></li>
+                        <li><a href="#videos"><i class="fas fa-chevron-right"></i> Videolar</a></li>
+                        <li><a href="#stats"><i class="fas fa-chevron-right"></i> Statistika</a></li>
+                        <li><a href="#about"><i class="fas fa-chevron-right"></i> Men haqimda</a></li>
+                        <li><a href="#gallery"><i class="fas fa-chevron-right"></i> Galereya</a></li>
+                        <li><a href="#contact"><i class="fas fa-chevron-right"></i> Aloqa</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-social">
+                    <h4>IJTIMOIY TARMOQLAR</h4>
+                    <div class="social-icons">
+                        <a href="https://www.youtube.com" target="_blank" title="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="https://www.twitch.tv" target="_blank" title="Twitch">
+                            <i class="fab fa-twitch"></i>
+                        </a>
+                        <a href="https://www.instagram.com" target="_blank" title="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://discord.com" target="_blank" title="Discord">
+                            <i class="fab fa-discord"></i>
+                        </a>
+                        <a href="https://t.me" target="_blank" title="Telegram">
+                            <i class="fab fa-telegram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 PUBG CREATOR. Barcha huquqlar himoyalangan. Bu sayt faqat ko'rgazma maqsadida yaratilgan.</p>
+                <p class="game-notice">PUBG MOBILE - Tencent Games kompaniyasining savdo belgisidir.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Loading Screen
+            const loadingScreen = document.getElementById('loadingScreen');
+            
+            setTimeout(() => {
+                loadingScreen.classList.add('hidden');
+            }, 2000);
+            
+            // Typewriter Effect
+            const typewriterElement = document.getElementById('typewriter');
+            const texts = ["PUBG CREATOR", "GAMING CONTENT", "SQUAD LEADER", "CONQUEROR"];
+            let textIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+            
+            function typeWriter() {
+                const currentText = texts[textIndex];
+                
+                if (isDeleting) {
+                    typewriterElement.textContent = currentText.substring(0, charIndex - 1);
+                    charIndex--;
+                } else {
+                    typewriterElement.textContent = currentText.substring(0, charIndex + 1);
+                    charIndex++;
+                }
+                
+                if (!isDeleting && charIndex === currentText.length) {
+                    isDeleting = true;
+                    setTimeout(typeWriter, 2000);
+                } else if (isDeleting && charIndex === 0) {
+                    isDeleting = false;
+                    textIndex = (textIndex + 1) % texts.length;
+                    setTimeout(typeWriter, 500);
+                } else {
+                    const speed = isDeleting ? 50 : 100;
+                    setTimeout(typeWriter, speed);
+                }
+            }
+            
+            setTimeout(typeWriter, 2500);
+            
+            // Theme Toggle
+            const themeToggle = document.getElementById('themeToggle');
+            const themeIcon = themeToggle.querySelector('i');
+            
+            themeToggle.addEventListener('click', () => {
+                const currentTheme = document.body.getAttribute('data-theme');
+                if (currentTheme === 'light') {
+                    document.body.setAttribute('data-theme', 'dark');
+                    themeIcon.className = 'fas fa-moon';
+                } else {
+                    document.body.setAttribute('data-theme', 'light');
+                    themeIcon.className = 'fas fa-sun';
+                }
+                localStorage.setItem('theme', document.body.getAttribute('data-theme'));
+            });
+            
+            // Load saved theme
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                document.body.setAttribute('data-theme', savedTheme);
+                themeIcon.className = savedTheme === 'light' ? 'fas fa-sun' : 'fas fa-moon';
+            }
+            
+            // Sound Toggle
+            const soundToggle = document.getElementById('soundToggle');
+            const soundIcon = soundToggle.querySelector('i');
+            
+            soundToggle.addEventListener('click', () => {
+                if (soundIcon.classList.contains('fa-volume-up')) {
+                    soundIcon.className = 'fas fa-volume-mute';
+                } else {
+                    soundIcon.className = 'fas fa-volume-up';
+                }
+            });
+            
+            // Mobile Menu Toggle
+            const menuToggle = document.getElementById('menuToggle');
+            const mainNav = document.getElementById('mainNav');
+            
+            menuToggle.addEventListener('click', () => {
+                mainNav.classList.toggle('active');
+                menuToggle.querySelector('i').className = mainNav.classList.contains('active') 
+                    ? 'fas fa-times' 
+                    : 'fas fa-bars';
+            });
+            
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.nav') && !e.target.closest('.menu-toggle') && mainNav.classList.contains('active')) {
+                    mainNav.classList.remove('active');
+                    menuToggle.querySelector('i').className = 'fas fa-bars';
+                }
+            });
+            
+            // Smooth Scroll for Navigation Links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    if(this.getAttribute('href') !== '#') {
+                        e.preventDefault();
+                        const targetId = this.getAttribute('href');
+                        const targetElement = document.querySelector(targetId);
+                        
+                        if(targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 80,
+                                behavior: 'smooth'
+                            });
+                            
+                            // Close mobile menu if open
+                            mainNav.classList.remove('active');
+                            menuToggle.querySelector('i').className = 'fas fa-bars';
+                            
+                            // Update active nav link
+                            document.querySelectorAll('.nav-link').forEach(link => {
+                                link.classList.remove('active');
+                            });
+                            this.classList.add('active');
+                        }
+                    }
+                });
+            });
+            
+            // Contact Form Submission
+            const contactForm = document.getElementById('contactForm');
+            if(contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Get form values
+                    const name = document.getElementById('name').value;
+                    const email = document.getElementById('email').value;
+                    const subject = document.getElementById('subject').value;
+                    const message = document.getElementById('message').value;
+                    
+                    // Show success message
+                    alert(`Xabar yuborildi!\n\nIsm: ${name}\nEmail: ${email}\nMavzu: ${subject}\n\nXabaringiz qabul qilindi. Tez orada aloqaga chiqamiz!`);
+                    
+                    // Reset form
+                    contactForm.reset();
+                });
+            }
+            
+            // Highlight active navigation link on scroll
+            window.addEventListener('scroll', () => {
+                const sections = document.querySelectorAll('section');
+                const navLinks = document.querySelectorAll('.nav-link');
+                
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if(scrollY >= (sectionTop - 100)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if(link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+            
+            // Ammo counter animation
+            const ammoElement = document.getElementById('ammoCounter');
+            if(ammoElement) {
+                let currentAmmo = 40;
+                setInterval(() => {
+                    if(currentAmmo > 0 && Math.random() > 0.7) {
+                        currentAmmo -= Math.floor(Math.random() * 5);
+                        if(currentAmmo < 0) currentAmmo = 0;
+                        ammoElement.textContent = `${currentAmmo}/160`;
+                        
+                        // Reload effect
+                        if(currentAmmo === 0) {
+                            setTimeout(() => {
+                                currentAmmo = 40;
+                                ammoElement.textContent = `${currentAmmo}/160`;
+                            }, 1000);
+                        }
+                    }
+                }, 2000);
+            }
+            
+            // Health and Armor animation
+            const healthFill = document.querySelector('.health-fill');
+            const armorFill = document.querySelector('.armor-fill');
+            const healthText = document.querySelector('.health-text');
+            const armorText = document.querySelector('.armor-text');
+            const healthValue = document.getElementById('healthValue');
+            const armorValue = document.getElementById('armorValue');
+            
+            let health = 85;
+            let armor = 60;
+            let armorLevel = 3;
+            
+            setInterval(() => {
+                // Simulate health and armor changes
+                if (Math.random() > 0.8) {
+                    health -= Math.random() * 5;
+                    if (health < 0) health = 0;
+                    
+                    healthFill.style.width = health + '%';
+                    healthText.textContent = Math.round(health) + '%';
+                    healthValue.textContent = Math.round(health) + '%';
+                    
+                    // Check if armor should decrease
+                    if (health < 50 && armor > 0) {
+                        armor -= Math.random() * 10;
+                        if (armor < 0) {
+                            armor = 0;
+                            armorLevel--;
+                            if (armorLevel < 1) armorLevel = 1;
+                        }
+                        
+                        armorFill.style.width = armor + '%';
+                        armorText.textContent = `LEVEL ${armorLevel}`;
+                        armorValue.textContent = `LEVEL ${armorLevel}`;
+                    }
+                    
+                    // Regenerate after a while
+                    if (health < 30) {
+                        setTimeout(() => {
+                            health = 85;
+                            armor = 60;
+                            armorLevel = 3;
+                            healthFill.style.width = health + '%';
+                            armorFill.style.width = armor + '%';
+                            healthText.textContent = Math.round(health) + '%';
+                            armorText.textContent = `LEVEL ${armorLevel}`;
+                            healthValue.textContent = Math.round(health) + '%';
+                            armorValue.textContent = `LEVEL ${armorLevel}`;
+                        }, 5000);
+                    }
+                }
+            }, 3000);
+            
+            // Add parallax effect to hero section
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const hero = document.querySelector('.hero');
+                if (hero) {
+                    hero.style.backgroundPositionY = scrolled * 0.5 + 'px';
+                }
+            });
+        });
+        
+        // Global functions
+        function openVideo(title) {
+            alert(`"${title}" videosini ko'rish uchun YouTube kanalimga tashrif buyuring!\n\nhttps://www.youtube.com`);
+        }
+        
+        function showGalleryImage(num) {
+            const images = [
+                "WINNER WINNER - Chicken Dinner momenti",
+                "SNIPER SHOT - 500m dan aniq zarba",
+                "VEHICLE KILL - Avtomobil bilan o'ldirish",
+                "SQUAD WIPE - Butun jamoa yo'q qilindi",
+                "AIRDROP RUSH - Airdrop uchun jang",
+                "FINAL CIRCLE - Oxiri doira jangi"
+            ];
+            alert(`Galereya rasmi: ${images[num-1]}`);
+        }
+        
+        function joinSquad() {
+            alert("SQUADGA QO'SHILISH:\n\nO'yin nomi: PUBG_Kreator_UZ\nPlayer ID: 5161879221\n\nMen bilan o'ynash uchun do'stlik so'rovi yuboring!");
+        }
+    </script>
+</body>
+</html>
